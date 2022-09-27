@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { ConnectButton } from "web3uikit";
 import Search from "../assets/svg/search";
 
 const styles = {
@@ -14,7 +15,7 @@ const styles = {
 
 const Header = () => {
   return (
-    <div class={styles.header}>
+    <div className={styles.header}>
       <Image
         src="https://s2.coinmarketcap.com/static/cloud/img/coinmarketcap_white_1.svg"
         alt="logo"
@@ -54,6 +55,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center">
+          <ConnectButton />
           <div className={styles.inputContainer}>
             <Search />
             <input placeholder="Search" className={styles.input} />
