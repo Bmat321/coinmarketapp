@@ -12,11 +12,11 @@ const styles = {
   bullishLabel: `flex cursor-pointer active:bg-green-600 items-center text text-green-600 border border-green-600 h-min px-2 rounded-lg`,
   bearishLabel: `flex cursor-pointer active:bg-red-500 items-center text-[#EA3943] border border-red-600 h-min px-2 rounded-lg`,
   input: `w-full bg-[#323546] p-4 outline-none rounded-xl`,
-  chatContainer: `p-5 bg-[#222531] p-4 outline-none rounded-xl`,
+  chatContainer: `p-7 bg-[#222531] p-6 outline-none rounded-xl`,
   flexBetween: `flex justify-between`,
   flexCenter: `flex justify-center items-center`,
   chat: `max-w-lg min-w-full`,
-  postButtonContainer: `flex align-center justify-end`,
+  postButtonContainer: `flex align-center justify-end mt-2`,
   boldText: `font-bold`,
 
   activeBullishLabel: `flex cursor-pointer bg-green-600 items-center text-white border border-green-600 h-min px-2 rounded-lg`,

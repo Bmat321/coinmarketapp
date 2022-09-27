@@ -15,7 +15,7 @@ import RateFilled from './buttons/RateFilled'
 import DropDownBtn from './buttons/DropDownBtn'
 
 const styles = {
-    coinDetails: `min-h-screen text-white`,
+    coinDetails: `min-h-screen text-white m-4`,
     coinDetailsLinks: `flex mt-3 flex-wrap`,
     greyBtn: `mr-3 mb-3 bg-slate-800 px-3 py-1 rounded-xl`,
     borderLeft: `ml-10 pl-5 w-full border-1 border-gray-800`,

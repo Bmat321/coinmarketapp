@@ -7,4 +7,8 @@ module.exports = {
       "encrypted-tbn0.gstatic.com",
     ],
   },
+  webpack: function (config, options) {
+    config.module.noParse = /gun\.js$/;
+    return config;
+  },
 };
