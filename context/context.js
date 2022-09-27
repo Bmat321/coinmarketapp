@@ -1,4 +1,3 @@
-import Moralis from "moralis";
 import { createContext, useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
 import { useMoralisQuery } from "react-moralis";
@@ -46,7 +45,7 @@ export const CoinMarketProvider = ({ children }) => {
     if (fromToken === "Link") return linkAddress;
     if (fromToken === "Dogecoin") return dogeCoinAddress;
     if (fromToken === "ActionCoin") return actionCoinAddress;
-    if (fromToken === "NgCoin") return ngCoinAddress;
+    if (fromToken === "Ngcoin") return ngCoinAddress;
     if (fromToken === "Usdc") return usdcAddress;
   };
 
@@ -54,8 +53,8 @@ export const CoinMarketProvider = ({ children }) => {
     if (toToken === "Dai") return daiAddress;
     if (toToken === "Link") return linkAddress;
     if (toToken === "Dogecoin") return dogeCoinAddress;
-    if (toToken === "ActionCoin") return actionCoinAddress;
-    if (toToken === "NgCoin") return ngCoinAddress;
+    if (toToken === "Actioncoin") return actionCoinAddress;
+    if (toToken === "Ngcoin") return ngCoinAddress;
     if (toToken === "Usdc") return usdcAddress;
   };
 
@@ -63,8 +62,8 @@ export const CoinMarketProvider = ({ children }) => {
     if (toToken === "Dai") return daiAbi;
     if (toToken === "Link") return linkAbi;
     if (toToken === "Dogecoin") return dogeAbi;
-    if (toToken === "ActionCoin") return actionCoinAbi;
-    if (toToken === "NgCoin") return ngCoinAbi;
+    if (toToken === "Actioncoin") return actionCoinAbi;
+    if (toToken === "Ngcoin") return ngCoinAbi;
     if (toToken === "Usdc") return usdcAbi;
   };
 
@@ -73,24 +72,26 @@ export const CoinMarketProvider = ({ children }) => {
       if (fromToken === "ETH") {
         if (!isAuthenticated) return;
         await Moralis.enableWeb3();
-        const contractAddress = getContractAddress();
-        const contractAbi = getToAbi();
+        const contractAddress = getToAddress();
+        const abi = getToAbi();
 
         let options = {
           contractAddress: contractAddress,
           functionName: "mint",
-          abi: contractAbi,
+          abi: abi,
           params: {
             to: currentAccount,
             amount: Moralis.Units.Token(amount),
           },
         };
-        const transaction0 = await Moralis.executeFunction(options);
-        const receipt = await transaction0.await(4);
-        console.log(receipt);
-        await sendEth();
+        try {
+          const transaction = await Moralis.executeFunction(options);
+          const receipt = await transaction.await(4);
+          console.log(receipt);
+          sendEth();
+        } catch (err) {}
       } else {
-        await swapToken();
+        swapToken();
       }
     } catch (error) {
       console.error(error);
